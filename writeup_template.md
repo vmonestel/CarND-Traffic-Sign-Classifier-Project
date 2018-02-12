@@ -16,7 +16,7 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./new_images/yield.png "Traffic Sign 7"
-[image2]: ./examples/grayscale.jpg "Grayscaling"
+[image2]: ./examples/grayscale.png "Grayscaling"
 [image3]: ./examples/orig_image.png "Original Image"
 [image4]: ./new_images/70_km_h.png "Traffic Sign 1"
 [image5]: ./new_images/road_works.png "Traffic Sign 2"
@@ -130,38 +130,28 @@ Here are some German traffic signs that I found on the web:
 ![alt text][image4] ![alt text][image5] ![alt text][image6] ![alt text][image15] 
 ![alt text][image7] ![alt text][image8] ![alt text][image1] ![alt text][image16] 
 
-The first image might be difficult to classify because ...
+The first image might be difficult to classify because there are some similar traffic signs (20km, 30km, 50km, ...) so I decided to try on one of those. The second and third images are "Road Works", the first one should be easy to classify but the other migh be difficult as it it rotated to the right. I tested a tricky stop sign in Spanish "Alto" to see what happened. I also chose 2 more stop signs, those are rotated. Finally, I included a couple of yield signs.
 
-#### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
+#### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set.
 
 Here are the results of the prediction:
 
-| Image			        |     Prediction	        					| 
+| Image			|     Prediction	        		| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| 70km/h      		| 70km/h   					| 
+| Road Works     	| Road Works 					|
+| Road Works		| Dangerous curve to the right			|
+| Stop Spanish	        | Stop					   	|
+| Stop			| Stop      					|
+| Stop			| Stop      					|
+| Yield			| Yield      					|
+| Yield			| Yield      					|
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 7 of the 8 traffic signs, which gives an accuracy of 87.5%. This is worse than the test accuracy which was 93.7%. The model was unable to classify the rotated "Road Works" sign, the image has some distortions that could affect the results, as well as the rotation effect. I was pleased that the model was able to classify the "Spanish Stop" sign sucessfully eventhough it was not trained to predict it.
 
-#### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
+#### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability.
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
+For the first image, the model is sure that this is a "70 km/h" sign (probability of 100%), and the image does contain a "70 km/h" sign.
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
-
-| Probability         	|     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
-
-
-For the second image ... 
-
-
+For the 3 Stop signs (including the Spanish Stop), the model predicted them correctly with a 100%. For the couple of yields, the model predicted them correctly with a 100%. For the non-rotated "road works", the model classified it correctly with a 100%. For the rotated "road works" sign, the model classified it to "Dangerous curve to the right" with 92%, 5% corresponds to "Road Works" and 2% corresponds to "Wild animals crossing".
